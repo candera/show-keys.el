@@ -62,17 +62,18 @@
   "When show-keys-mode is enabled, fires after every command.
 Updates the *shown-keys* buffer with the keys that were typed."
   (unless (member this-command show-keys-ignored-commands)
-    (with-current-buffer show-keys-buffer
-      (let ((buffer-read-only nil)
-            (orig-window (selected-window))
-            (show-buffer-window (get-buffer-window show-keys-buffer)))
-        (when show-buffer-window
-          (select-window show-buffer-window))
-        (goto-char (point-max))
-        (insert (format "%s (%s)\n"
-                        (key-description (this-command-keys-vector))
-                        this-command))
-        (when show-buffer-window
-          (select-window orig-window))))))
+    (let ((deactivate-mark nil))
+      (with-current-buffer show-keys-buffer
+        (let ((buffer-read-only nil)
+              (orig-window (selected-window))
+              (show-buffer-window (get-buffer-window show-keys-buffer)))
+          (when show-buffer-window
+            (select-window show-buffer-window))
+          (goto-char (point-max))
+          (insert (format "%s (%s)\n"
+                          (key-description (this-command-keys-vector))
+                          this-command))
+          (when show-buffer-window
+            (select-window orig-window)))))))
 
 (provide 'show-keys)
