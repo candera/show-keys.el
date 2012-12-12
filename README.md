@@ -31,6 +31,9 @@ handy for screencasts or for pairing with someone who doesn't know
 emacs that well and is wondering what you're typing. It's also
 occasionally handy for figuring out what the heck you just did.
 
+## Screenshot
+![screenshot](https://raw.github.com/candera/show-keys.el/master/screenshot.jpg)
+
 ## Credits
 
 Thanks to [Stuart Sierra](http://twitter.com/stuartsierra) for an
