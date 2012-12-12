@@ -40,9 +40,9 @@
                              ; displayed older keys after this many
                              ; commands
 (defvar show-keys-buffer nil)
-(defvar ignored-commands '(self-insert-command 
-                           delete-backward-char
-                           paredit-backward-delete))
+(defvar show-keys-ignored-commands '(self-insert-command
+                                     delete-backward-char
+                                     paredit-backward-delete))
 
 (define-minor-mode show-keys-mode
     "Displays the keys you've typed recently in the *shown-keys* buffer."
@@ -61,7 +61,7 @@
 (defun show-keys-command-hook ()
   "When show-keys-mode is enabled, fires after every command.
 Updates the *shown-keys* buffer with the keys that were typed."
-  (unless (member this-command ignored-commands)
+  (unless (member this-command show-keys-ignored-commands)
     (with-current-buffer show-keys-buffer
       (let ((buffer-read-only nil)
             (orig-window (selected-window))
