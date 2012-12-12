@@ -74,3 +74,5 @@ Updates the *shown-keys* buffer with the keys that were typed."
                         this-command))
         (when show-buffer-window
           (select-window orig-window))))))
+
+(provide 'show-keys)
