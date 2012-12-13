@@ -66,7 +66,7 @@ Updates the *shown-keys* buffer with the keys that were typed."
       (with-current-buffer show-keys-buffer
         (let ((buffer-read-only nil)
               (orig-window (selected-window))
-              (show-buffer-window (get-buffer-window show-keys-buffer)))
+              (show-buffer-window (get-buffer-window show-keys-buffer t)))
           (when show-buffer-window
             (select-window show-buffer-window))
           (goto-char (point-max))
