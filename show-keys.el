@@ -68,12 +68,12 @@ Updates the *shown-keys* buffer with the keys that were typed."
               (orig-window (selected-window))
               (show-buffer-window (get-buffer-window show-keys-buffer t)))
           (when show-buffer-window
-            (select-window show-buffer-window))
+            (select-window show-buffer-window t))
           (goto-char (point-max))
           (insert (format "%s (%s)\n"
                           (key-description (this-command-keys-vector))
                           this-command))
           (when show-buffer-window
-            (select-window orig-window)))))))
+            (select-window orig-window t)))))))
 
 (provide 'show-keys)
